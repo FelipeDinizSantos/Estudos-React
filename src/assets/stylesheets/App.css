@@ -1,0 +1,21 @@
+.btnClick
+{
+    background-color: transparent;
+    border: 1px solid black;
+    outline: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.btnClick:hover
+{
+    transform: translateY(-1px);
+}
+
+.clock
+{
+    text-align: center;
+    margin: 1em;
+    font-size: 1.2em;
+}

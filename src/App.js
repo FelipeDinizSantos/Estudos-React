@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import ReactLogo from './assets/images/reactLogo.png'; 
+import Button from './components/button';
+import Clock from './components/clock';
+import './assets/stylesheets/App.css';
 
-function App() {
+const App = () => 
+{
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Clock class='clock' />
+
+      <img src={ReactLogo} width={100} alt='reactLogo' />
+      <p>Hello, World!</p>
+
+      <Button class='btnClick' />
+    </>
   );
 }
 
