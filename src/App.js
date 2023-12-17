@@ -1,6 +1,7 @@
 import Clock from './components/clock';
 import PowerButton from './components/powerButton';
 import Form from './components/form';
+import Container from './components/container';
 import './assets/stylesheets/App.css';
 
 const App = () => 
@@ -29,6 +30,11 @@ const App = () =>
       <ul>{carsList}</ul>
 
       <Form />
+
+      <Container>
+        <h1>Elemente Filho</h1>
+        <p>Utilizando (props.children)</p>
+      </Container>
     </>
   );
 }

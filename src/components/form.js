@@ -2,27 +2,50 @@ import { useState } from "react";
 
 const Form = ()=>
 {
-    const [formInfos, setFormInfos] = useState(
+    const [form, setForm] = useState(
     {
-        name: ''
+        name: '',
+        password: ''
     })
 
-    const handleChange = (input)=>
+    const handleFormChange = event=>
     {
-        setFormInfos({...formInfos, name: input.value});
+        setForm(
+            {
+                ...form,
+                [event.target.name]: event.target.value
+            });
     }
 
+    const handleSubmit = event=>
+    {
+        event.preventDefault();
+    }
 
     return(
-        <form onSubmit={(e)=>{e.preventDefault()}}>
+        <form onSubmit={handleSubmit}>
+
             <label>Nome: </label>
             <input 
                 type="text" 
                 name="name" 
-                value={formInfos.name} 
-                onChange={(e)=>handleChange(e.target)}
+                value={form.name} 
+                onChange={handleFormChange}
             />
-            <p>Nome digitado: {formInfos.name}</p>
+            <label>Senha: </label>
+            <input
+                type="password"
+                name="password"
+                value={form.password}
+                onChange={handleFormChange}
+            />
+
+            <p>
+                nome: {form.name}
+            </p>
+            <p>
+                senha: {form.password}
+            </p>
         </form>
     );
 }
