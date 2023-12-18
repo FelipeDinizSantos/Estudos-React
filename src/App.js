@@ -1,42 +1,42 @@
-import Clock from './components/clock';
-import PowerButton from './components/powerButton';
-import Form from './components/form';
-import Container from './components/container';
-import './assets/stylesheets/App.css';
+import { useEffect, useState } from "react";
+import InitialPage from "./components/initialPage";
+import SecondaryPage from "./components/secondaryPage";
 
 const App = () => 
 {
-  const cars = 
-  [
-    "Toyota Corolla",
-    "Honda Civic",
-    "Ford Mustang",
-    "Chevrolet Camaro",
-    "Volkswagen Golf",
-    "BMW 3 Series",
-    "Mercedes-Benz C-Class",
-    "Audi A4",
-    "Nissan Altima",
-    "Tesla Model S"
-  ]
+  const [page, setPage] = useState(0)
 
-  const carsList = cars.map((car, index) => <li key={index}>{car}</li>)
+  useEffect(
+    ()=>
+    {
+      const url = window.location.href;
+      const splitedUrl = url.split('?');
+      setPage(Number(splitedUrl[1]));
+    }, []
+  )
+
+  const openPage = (index)=>
+  {
+    window.open('http://localhost:3000?'+index, '_self');
+  }
+
+  const returnPage = ()=>
+  {
+    if(page === 1) return <InitialPage />
+    else if(page === 2) return <SecondaryPage />
+    return(
+      <>
+        <button onClick={()=>openPage(1)}>Página Inicial</button> <br />
+        <button onClick={()=>openPage(2)}>Página Secundaria </button>
+      </>
+    )
+  }
 
   return (
     <>
-      <Clock class='clock' />
-      <PowerButton />
-
-      <ul>{carsList}</ul>
-
-      <Form />
-
-      <Container>
-        <h1>Elemente Filho</h1>
-        <p>Utilizando (props.children)</p>
-      </Container>
+      {returnPage()}
     </>
-  );
+  )
 }
 
 export default App;
