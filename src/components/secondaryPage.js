@@ -1,12 +1,10 @@
-const SecondaryPage = ()=>
+import CarsList from "./carsList";
+
+export default function SecondaryPage()
 {
     return(
         <>
-            <h1>
-                Página Secundaria
-            </h1>
+            <CarsList />
         </>
     );
 }
-
-export default SecondaryPage;
