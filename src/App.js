@@ -1,22 +1,21 @@
-import InitialPage from './components/initialPage';
-import SecondaryPage from './components/secondaryPage';
-import {Routes, Route, Link} from 'react-router-dom';
+import AppRoutes from './AppRoutes';
+import { useNavigate, Link } from 'react-router-dom'; // Ou LINK
 
 export default function App() 
 {
+  const navigate = useNavigate();
+  const goHome =()=>
+  {
+    navigate('/');
+  }
+
   return(
     <>
       <header>
-        <Link to='/initial-page'> InitialPage </Link>
-        <br />
-        <Link to='/secondary-page'> SecondaryPage </Link>
+        <button type='button' onClick={goHome}>InitialPage</button> <br/>
+        <Link to='/secondary-page/Isa'>SecondaryPage</Link>
       </header>
-      <main>
-        <Routes>
-          <Route path='/initial-page' element={<InitialPage />} />
-          <Route path='/secondary-page' element={<SecondaryPage />} />
-        </Routes>
-      </main>
+      <AppRoutes />
     </>
   )
 }
